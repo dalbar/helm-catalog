@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ldap-deployment-1
+spec:
+  selector:
+    matchLabels:
+      app: ldap
+  template:
+    metadata:
+      labels:
+        app: ldap
+    spec:
+      containers:
+      - name: ldap
+        image: localhost:5000/ldap
+        volumeMounts:
+          - mountPath: "/etc/ldap/"
+            name: ldap-config
+          - mountPath: "/var/lib/ldap/"
+            name: ldap-db
+          - mountPath: "/home/storyx-tls"
+            name: ldap-tls
+          - mountPath: "/home/letsencrypt-prod"
+            name: letsncrypt-prod
+        env:
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP  
+        ports:
+        - containerPort: 80
+        - containerPort: 389
+        - containerPort: 636
+      volumes:
+      - name: ldap-config
+        persistentVolumeClaim:
+          claimName: ldap-pvc
+      - name: ldap-db
+        persistentVolumeClaim:
+          claimName: phpldap-pvc
+      - name: ldap-tls
+        secret:
+          secretName: ldap-tls
+      - name: letsncrypt-prod
+        secret: 
+          secretName: letsncrypt-prod
+  

@@ -2,10 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 pvc: 
- storageClass: nextcloud
- size: 30Gi
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+ storageClass: 
+  ldap: 
+    name: ldap
+    size: 1Gi
+  phpldap: 
+    name: phpldap
+    size: 1Gi
