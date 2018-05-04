@@ -6,6 +6,6 @@ pvc:
   ldap: 
     name: ldap
     size: 1Gi
-  phpldap: 
-    name: phpldap
+  data: 
+    name: ldap-data 
     size: 1Gi

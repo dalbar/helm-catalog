@@ -16,12 +16,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: phpldap-pvc
+  name: ldap-data-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Block
-  storageClassName: {{ .Values.pvc.storageClass.phpldap.name }}
+  storageClassName: {{ .Values.pvc.storageClass.data.name }}
   resources:
     requests:
-      storage: {{ .Values.pvc.storageClass.phpldap.size }}
+      storage: {{ .Values.pvc.storageClass.data.size }}
