@@ -38,7 +38,7 @@ spec:
           claimName: ldap-pvc
       - name: ldap-db
         persistentVolumeClaim:
-          claimName: phpldap-pvc
+          claimName: ldap-data-pvc
       - name: ldap-tls
         secret:
           secretName: ldap-tls
