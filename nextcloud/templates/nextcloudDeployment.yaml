@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 80
       nodeSelector:
-        nextcloud: true
+        kubernetes.io/hostname: india634
       volumes:
       - name: nextcloud-data
         persistentVolumeClaim:
