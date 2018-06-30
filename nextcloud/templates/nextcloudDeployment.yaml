@@ -19,6 +19,8 @@ spec:
             name: nextcloud-data
         ports:
         - containerPort: 80
+      nodeSelector:
+        nextcloud: true
       volumes:
       - name: nextcloud-data
         persistentVolumeClaim:
